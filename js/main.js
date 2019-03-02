@@ -126,6 +126,8 @@ var comments = {
 function getCurrentPostComments(postId) {
     var res = []
   
+    for (var k in posts ) {
+      if ( parseInt(k, 10) === postId ) {
     for (var x in comments) {
       for (var y in comments[x]) {
         if (comments[x][y] == postId) {
@@ -140,6 +142,8 @@ function getCurrentPostComments(postId) {
         }
       }
     }
+  }
+}
   
     return res;
   }
