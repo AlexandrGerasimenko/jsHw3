@@ -124,28 +124,28 @@ var comments = {
 }
 
 function getCurrentPostComments(postId) {
-    var res = []
-  
-    for (var k in posts ) {
-      if ( parseInt(k, 10) === postId ) {
-    for (var x in comments) {
-      for (var y in comments[x]) {
-        if (comments[x][y] == postId) {
-          for (var z in users) {
-            if (comments[x].author == z) {
-              var obj = {};
-              obj.author = users[z].name;
-              obj.text = comments[x].text.replace(/\s+/g,' ');
-              res.push(obj);
+  var res = []
+
+  for (var k in posts) {
+    if (parseInt(k, 10) == postId) {
+      for (var x in comments) {
+        for (var y in comments[x]) {
+          if (comments[x][y] == postId) {
+            for (var z in users) {
+              if (comments[x].author == z) {
+                var obj = {};
+                obj.author = users[z].name;
+                obj.text = comments[x].text.replace(/\s+/g, ' ');
+                res.push(obj);
+              }
             }
           }
         }
       }
     }
   }
+
+  return res;
 }
-  
-    return res;
-  }
-  
-  console.log(getCurrentPostComments(7891451))
+
+console.log(getCurrentPostComments(7891451))
