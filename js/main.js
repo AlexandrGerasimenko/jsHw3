@@ -135,7 +135,7 @@ function getCurrentPostComments(postId) {
               if (comments[x].author == z) {
                 var obj = {};
                 obj.author = users[z].name;
-                obj.text = comments[x].text.replace(/\s+/g, ' ');
+                obj.text = comments[x].text.toString();;
                 res.push(obj);
               }
             }
