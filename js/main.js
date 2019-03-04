@@ -123,29 +123,17 @@ var comments = {
     }
 }
 
-function getCurrentPostComments(postId) {
-  var res = []
+function getPostComments( postId ) {
+  var postComments = []
+  for( var comment in comments )
+       if ( comments[ comment ].postId === postId )
+            postComments.push ({
+                 author: users[ comments[comment].author ].name,
+                 text: comments[ comment ].text
+            })
+  return postComments
+};
 
-  for (var k in posts) {
-    if (parseInt(k, 10) == postId) {
-      for (var x in comments) {
-        for (var y in comments[x]) {
-          if (comments[x][y] == postId) {
-            for (var z in users) {
-              if (comments[x].author == z) {
-                var obj = {};
-                obj.author = users[z].name;
-                obj.text = comments[x].text.toString();;
-                res.push(obj);
-              }
-            }
-          }
-        }
-      }
-    }
-  }
 
-  return res;
-}
 
 console.log(getCurrentPostComments(7891451));
